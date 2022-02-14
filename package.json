@@ -1,0 +1,43 @@
+{
+  "name": "@geoapify/route-directions",
+  "version": "1.0.0",
+  "description": "Route directions control to specify waypoints, choose travel mode and other Routing API parameters",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "style": "styles/styles.css",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://git@github.com/geoapify/route-directions.git"
+  },
+  "keywords": [
+    "route",
+    "directions",
+    "routing",
+    "driving",
+    "truck",
+    "walking",
+    "hiking",
+    "biking"
+  ],
+  "author": {
+    "name": "Geoapify GmbH",
+    "email": "info@geoapify.com",
+    "url": "https://geoapify.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/geoapify/route-directions/issues"
+  },
+  "homepage": "https://github.com/geoapify/route-directions#readme",
+  "devDependencies": {
+    "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "@geoapify/geocoder-autocomplete": "^1.3.3"
+  },
+  "bundledDependencies": ["@geoapify/geocoder-autocomplete"]
+}

@@ -1,0 +1,278 @@
+@import '~@geoapify/geocoder-autocomplete/styles/minimal.css';
+
+.geoapify-route-directions-waypoint-and-swap-button-container{
+  position: relative;
+}
+
+.geoapify-route-directions-waypoint {
+  position: relative;
+  padding: 5px 0;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.geoapify-route-directions-waypoint.over {
+  border-top: 2px solid rgba(150, 150, 150, 0.6);
+}
+
+.geoapify-route-directions-waypoint.over.bottom {
+  border-top: none;
+  border-bottom: 2px solid rgba(150, 150, 150, 0.6);
+}
+
+.geoapify-route-directions-waypoint.dragElem {
+  opacity: 0.4;
+}
+
+.geoapify-route-directions-waypoint .geoapify-route-directions-waypoint-address-input {
+  position: relative;
+  flex: 1;
+}
+
+.geoapify-route-directions-waypoint .geoapify-route-directions-waypoint-remove-button-container {
+  display: flex;
+
+  margin-left: 10px;
+  width: 40px;
+}
+
+.geoapify-route-directions-waypoint .geoapify-route-directions-waypoint-remove-button {
+  display: none;
+  color: rgba(150, 150, 150, 0.8);
+  cursor: pointer;
+}
+
+.geoapify-route-directions-waypoint.removable .geoapify-route-directions-waypoint-remove-button {
+  display: flex;
+}
+
+.geoapify-route-directions-waypoint-icon {
+  width: 40px;
+  height: 100%;
+  position: relative;
+  cursor: move;
+}
+
+.geoapify-route-directions-waypoint-icon .geoapify-route-directions-waypoint-icon-line {
+  position: absolute;
+  left: 19px;
+  height: 25px;
+  border-left: 2px dotted rgba(150, 150, 150, 0.3);
+  width: 0px;
+  margin-top: 10px;
+}
+
+.geoapify-route-directions-waypoint-icon .geoapify-route-directions-waypoint-icon-icon {
+  position: absolute;
+  left: 13px;
+  background: white;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(150, 150, 150, 0.8);
+  transform: translateY(-50%);
+}
+
+.geoapify-route-directions-waypoint-icon.last .geoapify-route-directions-waypoint-icon-line {
+  display: none;
+}
+
+.geoapify-route-directions-waypoint-icon.last .geoapify-route-directions-waypoint-icon-icon {
+  left: 10px;
+  display: inline-block;
+  border-radius: 14px 14px 14px 0;
+  width: 0px;
+  height: 0px;
+  border: 10px solid rgb(255 109 109);
+  transform: rotate(-45deg);
+  position: relative;
+}
+
+.geoapify-route-directions-waypoint-icon.last .geoapify-route-directions-waypoint-icon-icon::after {
+  content: '';
+  display: block;
+  background: white;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: -4px;
+}
+
+.geoapify-route-directions-switch-waypoints {
+  display: none;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(150, 150, 150, 0.8);
+  cursor: pointer;
+}
+
+.geoapify-route-directions-add-destination {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row;
+  color: rgba(50, 50, 50, 0.8);
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.geoapify-route-directions-add-destination .icon {
+  width: 40px;
+  text-align: center;
+}
+
+.geoapify-route-directions-add-destination .text {
+  color: rgba(100, 100, 100, 0.8);
+  margin-left: 7px;
+}
+
+.geoapify-route-directions-switch-waypoints.visible {
+  display: block;
+}
+
+.geoapify-route-directions-mode-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.geoapify-route-directions-mode-button {
+  margin: 0 1px;
+  padding: 5px;
+  color: rgba(50, 50, 50, 0.8);
+  width: 26px;
+  height: 26px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.geoapify-route-directions-mode-button:hover {
+  background: rgba(200, 200, 200, 0.3);
+  border-radius: 50%;
+}
+
+.geoapify-route-directions-mode-button.active {
+  background: rgb(177 214 237 / 40%);
+  border-radius: 50%;
+  color: #0075ff;
+}
+
+.geoapify-route-directions-message {
+  font-size: smaller;
+  margin-top: 20px;
+  color: rgba(50, 50, 50, 0.8);
+}
+
+.geoapify-route-directions-message.error {
+  font-size: smaller;
+  margin-top: 20px;
+  color: rgb(255 109 109);
+}
+
+.geoapify-route-directions-options-checkbox, .geoapify-route-directions-options-radiobutton {
+  color: rgba(50, 50, 50, 0.8);
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.geoapify-route-directions-options-checkbox .text, .geoapify-route-directions-options-radiobutton .text {
+  margin-left: 5px;
+}
+
+.geoapify-route-directions-options-container {
+  margin-left: 45px;
+}
+
+.geoapify-route-directions-options-line {
+  margin-top: 10px;
+
+  display: flex;
+  gap: 10px;
+}
+
+.geoapify-route-directions-options-label {
+  min-width: 60px;
+  color: rgba(50, 50, 50, 0.8);
+}
+
+.geoapify-route-directions-generate-button-container {
+  margin: 10px 40px;
+}
+
+.geoapify-route-directions-generate-button {
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background: rgba(150, 150, 150, 0.1);
+  padding: 8px 10px;
+
+  font-size: .875rem;
+  letter-spacing: .0178571429em;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.geoapify-route-directions-generate-button:hover {
+  border-radius: 6px;
+  border: 1px solid rgb(177 214 237 / 50%);
+  background: rgb(177 214 237 / 40%);
+}
+
+.geoapify-route-directions-in-progress-container {
+  display: none;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.3);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.geoapify-route-directions-in-progress-container.visible {
+  display: flex;
+}
+
+.lds-facebook {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: rgb(150, 150, 150);
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%, 100% {
+    top: 24px;
+    height: 32px;
+  }
+}
