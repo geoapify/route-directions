@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Geoapify + Leaflet: Address Search Plugin</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/styles/a11y-light.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/@geoapify/route-directions@^1/styles/styles.css" />
+
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      height: 155px;
+      padding: 0 20px;
+    }
+
+    .demo-container {
+      flex: 1;
+      max-height: 100%;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      margin: 10px;
+      box-shadow: 0px 0px 5px 3px rgb(0 0 0 / 10%);
+      border-radius: 5px;
+    }
+
+    #my-map {
+      flex: 1;
+    }
+
+    .code-container {
+      padding: 10px;
+      min-width: 600px;
+      max-width: 600px;
+
+      overflow-y: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="demo-container">
+    <div class="controls">
+      <div class="header">
+        <div id="route-directions"></div>
+      </div>
+      <div id="my-map"></div>
+    </div>
+    <div class="code-container">
+      <h1>Directions API integration</h1>
+      <pre><code class="language-js">
+
+      </code></pre>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js"></script>
+  <script src="https://unpkg.com/@geoapify/route-directions@^1/dist/index.js"></script>
+
+  <script>hljs.highlightAll();</script>
+
+  <script>
+    // The Leaflet map Object
+    var map = L.map('my-map', { zoomControl: false }).setView([48.1500327, 11.5753989], 6);
+
+    // The API Key provided is restricted to this demo
+    // Get your own API Key on https://myprojects.geoapify.com
+    var apiKey = "93b8e26606dd485183dcdab30f239f81";
+    var mapURL = L.Browser.retina
+      ? `https://maps.geoapify.com/v1/tile/{mapStyle}/{z}/{x}/{y}.png?apiKey={apiKey}`
+      : `https://maps.geoapify.com/v1/tile/{mapStyle}/{z}/{x}/{y}@2x.png?apiKey={apiKey}`;
+
+    // Add map tiles layer. Set 20 as the maximal zoom and provide map data attribution.
+    L.tileLayer(mapURL, {
+      attribution: 'Powered by <a href="https://www.geoapify.com/" target="_blank">Geoapify</a> | <a href="https://openmaptiles.org/" rel="nofollow" target="_blank">© OpenMapTiles</a> <a href="https://www.openstreetmap.org/copyright" rel="nofollow" target="_blank">© OpenStreetMap</a> contributors',
+      apiKey: apiKey,
+      mapStyle: "osm-bright-smooth", // More map styles on https://apidocs.geoapify.com/docs/maps/map-tiles/
+      maxZoom: 20
+    }).addTo(map);
+
+    L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+    const routeDirections = new RouteDirections(document.getElementById("route-directions"), apiKey);
+
+  </script>
+</body>
+
+</html>

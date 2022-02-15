@@ -1,2 +1,3 @@
-export { RouteDirections, RouteDirectionsOptions, TravelMode, Waypoint } from './route-directions';
-export { GeocoderAutocompleteOptions } from '@geoapify/geocoder-autocomplete';
+export { RouteDirections, RouteDirectionsOptions, TravelMode, Waypoint, WaypointChangeCallbackType, 
+  ModeChangeCallbackType, OptionChangeCallbackType, RouteCalculatedCallbackType, RoutingOption } from './route-directions';
+export { GeocoderAutocompleteOptions, SupportedLanguage } from '@geoapify/geocoder-autocomplete';

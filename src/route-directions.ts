@@ -69,6 +69,7 @@ export class RouteDirections {
       if (waypointsWithCoords.length >= 2) {
         const waypoints = waypointsWithCoords.map(location => location.lat + ',' + location.lon).join('|');
         let url = `${this.routingUrl}?waypoints=${waypoints}&mode=${this.options.mode}`;
+
         url += this.options.lang ? `&lang=${this.options.lang}` : '';
 
         const avoids = [];
@@ -166,6 +167,42 @@ export class RouteDirections {
     if (operation === 'routeCalculated' && this.callbacksRouteCalculated.indexOf(callback) >= 0) {
       this.callbacksRouteCalculated.splice(this.callbacksRouteCalculated.indexOf(callback), 1);
     }
+  }
+
+  public addLocation(lat: number, lon: number, address?: string) {
+    const waypoint = this.options.waypoints.find(waypoint => !waypoint.lon || !waypoint.lat);
+    if (waypoint) {
+      waypoint.lat = lat;
+      waypoint.lon = lon;
+      waypoint.address = address;
+
+      if (address && waypoint.geocoder) {
+        waypoint.geocoder.setValue(address);
+      }
+
+      const url = `${this.reverseGeocodingAddress}?lat=${waypoint.lat}&lon=${waypoint.lon}&format=json&apiKey=${this.apiKey}`;
+
+      fetch(url).then(result => result.json()).then(result => {
+        if (result && result.results?.length) {
+          waypoint.address = result.results[0].formatted;
+          if (waypoint.geocoder) {
+            waypoint.geocoder.setValue(result.results[0].formatted);
+          }
+        } else {
+          // address is not found
+          delete waypoint.lon;
+          delete waypoint.lat;
+          this.showMessage(result, true);
+        }
+        this.updateWaypointControls();
+      }, err => {
+        this.showMessage(err, true);
+      });
+    }
+  }
+
+  public getOptions(): RouteDirectionsOptions {
+    return this.options;
   }
 
   private sendAutoRequest() {
@@ -591,7 +628,7 @@ export class RouteDirections {
       optionsLine2.appendChild(radiobutton2);
     }
 
-    if (optionsLine1.hasChildNodes()) {
+    if (optionsLine2.hasChildNodes()) {
       const unitsLabel = document.createElement("span")
       unitsLabel.classList.add("geoapify-route-directions-options-label");
       unitsLabel.textContent = this.labels.units;
@@ -599,7 +636,6 @@ export class RouteDirections {
       container.appendChild(optionsLine2);
     }
   }
-
 
   private generateWaypoint(container: HTMLElement, waypointData: Waypoint) {
     const waypoint = document.createElement("div");
