@@ -1,4 +1,4 @@
-@import '~@geoapify/geocoder-autocomplete/styles/minimal.css';
+@import '@geoapify/geocoder-autocomplete/styles/minimal';
 
 .geoapify-route-directions-waypoint-and-swap-button-container{
   position: relative;

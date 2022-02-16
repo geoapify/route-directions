@@ -4,10 +4,15 @@
   "description": "Route Directions component for Routing API - choose waypoints, select route options, calculate the route",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "minimized": "dist/index.min.js",
+  "module": "dist/index.min.esm.js",
   "style": "styles/styles.css",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build-all": "npm run build && npm run build-minimized && npm run build-css-minimized",
+    "build": "tsc",
+    "build-minimized": "rollup -c",
+    "build-css-minimized": "postcss -o styles/styles.min.css styles/styles.css"
   },
   "repository": {
     "type": "git",
@@ -34,10 +39,20 @@
   },
   "homepage": "https://github.com/geoapify/route-directions#readme",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "cssnano": "^5.0.17",
+    "postcss": "^8.4.6",
+    "postcss-cli": "^9.1.0",
+    "postcss-import": "^14.0.2",
+    "rollup": "^2.67.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "tslib": "^2.3.1",
     "typescript": "^4.5.5"
   },
   "dependencies": {
     "@geoapify/geocoder-autocomplete": "^1.3.3"
-  },
-  "bundledDependencies": ["@geoapify/geocoder-autocomplete"]
+  }
 }

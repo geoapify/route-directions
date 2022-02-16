@@ -1,5 +1,5 @@
-import { GeocoderAutocomplete, GeocoderAutocompleteOptions, SupportedLanguage } from "@geoapify/geocoder-autocomplete";
-
+import { GeocoderAutocomplete } from "@geoapify/geocoder-autocomplete";
+import type { GeocoderAutocompleteOptions, SupportedLanguage } from "@geoapify/geocoder-autocomplete";
 export class RouteDirections {
 
   private MIN_ADDRESS_LENGTH = 3;

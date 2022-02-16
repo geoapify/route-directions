@@ -7,7 +7,7 @@
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
   <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/styles/a11y-light.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/@geoapify/route-directions@^1/styles/styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@geoapify/route-directions@^1/styles/styles.min.css" />
 
   <style>
     html,
@@ -23,8 +23,10 @@
     }
 
     .header {
-      height: 155px;
-      padding: 0 20px;
+      padding: 20px;
+      z-index: 1000;
+      width: 600px;
+      margin: auto;
     }
 
     .demo-container {
@@ -76,7 +78,7 @@
 
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
   <script src="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js"></script>
-  <script src="https://unpkg.com/@geoapify/route-directions@^1/dist/index.js"></script>
+  <script src="https://unpkg.com/@geoapify/route-directions@^1/dist/index.min.js"></script>
 
   <script>hljs.highlightAll();</script>
 
@@ -101,7 +103,7 @@
 
     L.control.zoom({ position: 'bottomright' }).addTo(map);
 
-    const routeDirections = new RouteDirections(document.getElementById("route-directions"), apiKey);
+    const routeDirections = new directions.RouteDirections(document.getElementById("route-directions"), apiKey);
 
   </script>
 </body>
