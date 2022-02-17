@@ -102,19 +102,17 @@ export class RouteDirections {
         url += `&apiKey=${this.apiKey}`;
 
         if (this.previousRoutingAPICallURL === url) {
-          // Do nothing when the call is repeated
+          // Do nothing when the call is repeated          
           return;
         }
 
         this.inProgress(true);
         fetch(url).then(response => response.json()).then(result => {
-
           this.previousRoutingAPICallURL = url;
-
           if (result?.features?.length) {
             this.onRouteCalculated(result.features[0]);
             resolve(result.features[0]);
-          } else if (result.features.length === 0) {
+          } else if (result.features && result.features?.length === 0) {
             this.showMessage(this.labels.noRouteFound);
             reject(this.labels.noRouteFound);
           } else if (result.error) {
@@ -175,6 +173,7 @@ export class RouteDirections {
       waypoint.lat = lat;
       waypoint.lon = lon;
       waypoint.address = address;
+      this.onWaypointsChanged(waypoint, 'changed');
 
       if (address && waypoint.geocoder) {
         waypoint.geocoder.setValue(address);
@@ -190,9 +189,10 @@ export class RouteDirections {
           }
         } else {
           // address is not found
-          delete waypoint.lon;
-          delete waypoint.lat;
-          this.showMessage(result, true);
+          waypoint.address = `${waypoint.lat} ${waypoint.lon}`;
+          if (waypoint.geocoder) {
+            waypoint.geocoder.setValue(`${waypoint.lat} ${waypoint.lon}`);
+          }
         }
         this.updateWaypointControls();
       }, err => {
@@ -222,6 +222,7 @@ export class RouteDirections {
         canceled: true
       });
       this.currentPromiseReject = null;
+      this.previousRoutingAPICallURL = null;
     }
 
     this.currentTimeout = window.setTimeout(() => {
@@ -327,9 +328,10 @@ export class RouteDirections {
               }
             } else {
               // address is not found
-              delete waypoint.lon;
-              delete waypoint.lat;
-              this.showMessage(result, true);
+              waypoint.address = `${waypoint.lat} ${waypoint.lon}`;
+              if (waypoint.geocoder) {
+                waypoint.geocoder.setValue(`${waypoint.lat} ${waypoint.lon}`);
+              }
             }
             this.updateWaypointControls();
             resolve();
@@ -810,7 +812,7 @@ export class RouteDirections {
     // Don't do anything if dropping the same column we're dragging.
     if (this.dragElement !== element) {
       if (element.classList.contains("bottom")) {
-        this.moveWaypoints(this.getElementIndex(this.dragElement), this.getElementIndex(element.nextElementSibling as HTMLElement))
+        this.moveWaypoints(this.getElementIndex(this.dragElement), this.getElementIndex(element as HTMLElement) + 1)
         element.parentNode.insertBefore(this.dragElement, element.nextElementSibling);
       } else {
         this.moveWaypoints(this.getElementIndex(this.dragElement), this.getElementIndex(element as HTMLElement))
