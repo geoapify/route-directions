@@ -88,7 +88,6 @@ Here are the options you can specify when creating a route directions object:
 | **avoidFerries** | *boolean* | `false` | Avoid ferries when calculating the route |
 | **elevation** | *boolean* | `false` | Include elevation data and ranges to the route |
 | **units** | `metric`, `imperial` | `metric` | Distance units |
-| **noStopover** | *boolean* | `false` | Don't  |
 | **lang** | `bg`, `ca`, `cs`, `da`, `de`, `el`, `en`, `es`, `et`, `fi`, `fr`, `hi`, `hu`, `it`, `ja`, `nl`, `pl`, `pt`, `ro`, `ru`, `sk`, `sl`, `sv`, `tr`, `uk` | `en` | Language |
 | **noStopover** | *boolean* | `false` | Don't let to add more than two waypoints |
 | **supportedModes** | array of [ `walk`, `hike`, `scooter`,  `motorcycle`, `drive`, `light_truck`, `medium_truck`, `truck`, `bicycle`, `mountain_bike`, `road_bike`, `bus`] | [`walk`, `bicycle`, `drive`, `medium_truck`] | Travel modes to be shown on the control |

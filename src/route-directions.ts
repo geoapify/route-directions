@@ -673,13 +673,22 @@ export class RouteDirections {
         waypointData.address = location.properties.formatted;
         waypointData.lon = location.properties.lon;
         waypointData.lat = location.properties.lat;
+
+        if (geocoder.isOpen()) {
+          geocoder.once('close', () => {
+            this.onWaypointsChanged(waypointData, 'changed');
+          });
+        } else {
+          this.onWaypointsChanged(waypointData, 'changed');
+        }
+
       } else {
         delete waypointData.address;
         delete waypointData.lon;
         delete waypointData.lat;
+        this.onWaypointsChanged(waypointData, 'changed');
       }
 
-      this.onWaypointsChanged(waypointData, 'changed');
     });
 
     waypoint.appendChild(geocoderElement);
