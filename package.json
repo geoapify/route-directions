@@ -1,6 +1,6 @@
 {
   "name": "@geoapify/route-directions",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Route Directions component for Routing API - choose waypoints, select route options, calculate the route",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
