@@ -185,6 +185,18 @@ You can customize and localize the labels found on the RouteDirections controls 
 | **calculateButton** | "Calculate" |
 | **noRouteFound** | "No route found" |
 | **warning.min2Waypoints** | "Choose at least two waypoints to calculate a route" |
+| **walk** | "Walk" |
+| **hike** | "Hike" |
+| **scooter** | "Scooter" |
+| **motorcycle** | "Motocycle" |
+| **drive** | "drive" |
+| **light_truck** | "Van" |
+| **medium_truck** | "Delivery truck" |
+| **truck** | "Truck" |
+| **bicycle** | "Bicycle" |
+| **mountain_bike** | "Montain bicycle" |
+| **road_bike** | "Road bicycle" |
+| **bus** | "Bus" |
 
 #### Localize the control
 ```js

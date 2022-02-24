@@ -27,7 +27,19 @@ export class RouteDirections {
     "unitsKilometers": "Kilometers",
     "calculateButton": "Calculate",
     "noRouteFound": "No route found",
-    "warning.min2Waypoints": "Choose at least two waypoints to calculate a route"
+    "warning.min2Waypoints": "Choose at least two waypoints to calculate a route",
+    'walk': "Walk", 
+    'hike': 'Hike', 
+    'scooter': "Scooter", 
+    'motorcycle': "Motocycle", 
+    'drive': "drive", 
+    'light_truck': "Van", 
+    'medium_truck': "Delivery truck", 
+    'truck': "Truck", 
+    'bicycle': "Bicycle", 
+    'mountain_bike': "Montain bicycle", 
+    'road_bike': "Road bicycle", 
+    'bus': "Bus"
   };
 
   private geocoderOptions: GeocoderAutocompleteOptions = {
@@ -416,6 +428,7 @@ export class RouteDirections {
       const modeButton = document.createElement("div");
       modeButton.classList.add("geoapify-route-directions-mode-button");
       modeButton.classList.add(`mode__${mode}`);
+      modeButton.title = this.labels[mode];
       this.addIcon(modeButton, mode);
       modeButton.addEventListener("click", () => {
         this.options.mode = mode;
