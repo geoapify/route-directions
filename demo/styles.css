@@ -1,0 +1,125 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.demo-container {
+    flex: 1;
+    max-height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.demo {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+
+    margin: 10px;
+    box-shadow: 0px 0px 5px 3px rgb(0 0 0 / 10%);
+    border-radius: 5px;
+}
+
+.controls {
+    padding: 20px;
+    width: 500px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#instructions {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+#my-map {
+    flex: 1;
+}
+
+.code-container {
+    padding: 10px;
+    min-width: 600px;
+    max-width: 600px;
+
+    overflow-y: auto;
+}
+
+.direction-waypoints {
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 10px;
+}
+
+.direction-waypoints.smaller {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.direction-waypoints .direction-waypoints-from-to{
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.direction-instruction {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0;
+
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.direction-instruction-icon {
+    min-width: 40px;
+    max-width: 40px;
+    display: flex;
+}
+
+.button {
+    background: grey;
+    border: none;
+    width: 100px;
+    border-radius: 4px;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    float: right;
+}
+
+.button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.button:focus {
+    outline: none;
+    box-shadow: 0 0 4px rgba(76, 175, 80, 0.8);
+}
+
+.hidden {
+    display: none;
+}
+
+.elevation-profile-container {
+    max-height: 250px;
+}
